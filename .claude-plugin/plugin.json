@@ -1,0 +1,10 @@
+{
+  "name": "ux-audit",
+  "description": "UX heuristic evaluation agent for mobile apps. Evaluates user flows against Nielsen's 10 heuristics with actionable findings.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ingro Del Valle"
+  },
+  "license": "MIT",
+  "keywords": ["ux", "heuristics", "nielsen", "usability", "mobile", "evaluation", "audit"]
+}
