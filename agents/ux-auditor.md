@@ -99,6 +99,52 @@ Build an **action inventory** — list every instance of these actions across al
 
 **Output:** A consistency matrix showing each action × each screen, marking whether the behavior is consistent (✓), inconsistent (✗), or missing (—).
 
+### D5: Interaction Parity
+*"Similar UI elements behave identically regardless of which screen they appear on"*
+
+**THIS IS THE MOST IMPORTANT DIMENSION. Users do not think in "flows" — they see lists of items across the app and expect them to work the same way.**
+
+Build a **list interaction inventory** — find EVERY screen that shows a scrollable list of items and compare:
+
+| Question | How to evaluate |
+|----------|----------------|
+| **Tap behavior** | What happens when the user taps an item? Does it navigate to detail? Open a bottom sheet? Do nothing? Is this the SAME across all similar lists? |
+| **Long-press** | Does long-pressing enter multi-select mode? On ALL lists or only some? |
+| **Multi-select** | Which lists support selecting multiple items? Which don't? If the user can multi-select transactions, why can't they multi-select planned items? |
+| **Swipe semantics** | On list A, swipe-right means X. On list B, swipe-right means Y. Are these semantically consistent? Does swipe exist on all lists or only some? |
+| **Batch actions** | Which lists offer batch operations (delete, duplicate, change category)? Which don't? |
+
+**CRITICAL: Compare these specific list pairs:**
+
+1. **Transaction List vs Account Detail transactions** — These show the SAME TransactionCards. Do they support the SAME interactions? (tap, long-press, multi-select, swipe, batch actions)
+2. **Transaction List vs Planned Items list** — Both are lists of financial items. Do they support the same tap/select/swipe patterns? If not, why?
+3. **Planned Items vs Pending Transactions** — Both use swipe gestures. Do swipe-right and swipe-left mean the same thing?
+4. **Recurring Obligations vs Planned Items** — Both are lists of financial commitments. Do they support the same interactions?
+5. **Dashboard upcoming items vs Budget planned items** — These may show the same data. Do they respond to the same gestures?
+
+**For each pair, produce:**
+
+```markdown
+### [List A] vs [List B]
+| Interaction | List A | List B | Same? |
+|-------------|--------|--------|:-----:|
+| Tap | navigates to detail | opens bottom sheet | ✗ |
+| Long-press | enters multi-select | nothing | ✗ |
+| Swipe right | — | fulfill | ✗ |
+| Swipe left | — | skip | ✗ |
+| Multi-select | yes (checkbox + top bar) | no | ✗ |
+| Batch delete | yes | no | ✗ |
+```
+
+**Scoring guide:**
+- 5/5: All similar lists behave identically
+- 4/5: Minor differences justified by context (e.g., dashboard items are read-only)
+- 3/5: Some lists support interactions others don't, but it's not confusing
+- 2/5: User will be surprised that a gesture works on one list but not another
+- 1/5: Same gesture means different things on different lists
+
+**Output:** Pairwise comparison matrices for ALL list pairs found in the app.
+
 ### D2: Visual Consistency
 *"The same concept looks the same everywhere in the app"*
 
@@ -222,6 +268,9 @@ Build a **feedback inventory**:
 ### D4: Mental Model Consistency
 [same format]
 
+### D5: Interaction Parity Matrix
+[pairwise comparison tables as described above]
+
 ### Cross-Flow Score
 | Dimension | Score (1-5) | Worst Issue |
 |-----------|-------------|-------------|
@@ -229,9 +278,10 @@ Build a **feedback inventory**:
 | D2: Visual | X | ... |
 | D3: Feedback | X | ... |
 | D4: Mental Model | X | ... |
+| D5: Interaction Parity | X | ... |
 
-**Cross-Flow Consistency Score:** X/20
-**Combined Score (Phase 1 avg + Phase 2):** X/70
+**Cross-Flow Consistency Score:** X/25
+**Combined Score (Phase 1 avg + Phase 2):** X/75
 ```
 
 ---

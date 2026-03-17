@@ -1,21 +1,21 @@
 ---
 name: ux-heuristic-audit
-description: Use when evaluating app usability, identifying UX friction, or auditing user flows against established heuristics. Triggers on words like "UX audit", "usability", "friction", "user experience", "heuristic evaluation", "consistency audit".
+description: Use when evaluating app usability, identifying UX friction, or auditing user flows against established heuristics. Triggers on words like "UX audit", "usability", "friction", "user experience", "heuristic evaluation", "consistency audit", "interaction parity".
 ---
 
 # UX Heuristic Audit
 
 ## Overview
 
-Two-phase UX evaluation for mobile apps. **Phase 1** evaluates individual flows against Nielsen's 10 heuristics. **Phase 2** evaluates cross-flow consistency across 4 dimensions (behavioral, visual, feedback, mental model). Together they produce a holistic view of the app's usability.
+Two-phase UX evaluation for mobile apps. **Phase 1** evaluates individual flows against Nielsen's 10 heuristics. **Phase 2** evaluates cross-flow consistency across 5 dimensions — including **Interaction Parity**, which catches when similar lists behave differently (the #1 source of "something feels off" user feedback).
 
 ## When to Use
 
 - User asks to "audit UX" or "check usability" → Phase 1 (single flow) or Phase 1+2 (all flows)
 - User reports friction ("something feels off") → Phase 1 on the specific flow
+- User says "why does X work differently here?" → **Phase 2 with D5 focus**
 - After implementing a new feature → Phase 1 to validate
 - Periodic quality check → Phase 1+2 across all major flows
-- User asks about "consistency" or "why does X work differently here?" → Phase 2
 
 ## Phase 1: Nielsen's 10 Heuristics (per flow)
 
@@ -42,10 +42,15 @@ Two-phase UX evaluation for mobile apps. **Phase 1** evaluates individual flows 
 | D2 | Visual Consistency | Do the same concepts look the same everywhere? |
 | D3 | Feedback Consistency | Does the user get the same feedback type for the same action type? |
 | D4 | Mental Model Consistency | Are financial concepts coherent across all views? |
+| **D5** | **Interaction Parity** | **Do similar lists of items support the same tap/swipe/select/batch interactions?** |
 
-**Score:** 1-5 per dimension, 20 max.
+**D5 is the most critical dimension.** Users see "a list of financial items" — not "the planned items tab" vs "the transaction list". If one list supports multi-select and another doesn't, the user feels the inconsistency immediately even if they can't articulate why.
 
-**Combined Score:** Phase 1 average + Phase 2 = X/70.
+**D5 requires pairwise comparison** of every list in the app: what happens on tap, long-press, swipe-right, swipe-left, multi-select, batch actions.
+
+**Score:** 1-5 per dimension, 25 max.
+
+**Combined Score:** Phase 1 average + Phase 2 = X/75.
 
 ## Severity Scale
 
